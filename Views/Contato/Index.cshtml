@@ -1,0 +1,54 @@
+﻿
+@using TesteWebApiContatos.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cadas</h2>
+
+
+
+
+@if (Model.Count > 0)
+{
+    <div class="fw-container">
+        <div class="fw-body">
+            <div class="content">
+                <table id="example" class="table table-striped table-bordered table-striped" style="font-size:12px;">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th>Empresa</th>
+                            <th>Email</th>
+                            <th>Telefone</th>
+                            <th>Nascimento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Contato item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <center>
+                                        <a class="btn btn-primary btn-xs glyphicon glyphicon-pencil" title="Editar" href="@Url.Action("Editar", new { @Controller = @item.Id })">
+                                        </a>
+                                    </center>
+                                </td>
+                                <td>
+                                    <a title="Acessar detalhe" href="@Url.Action("Editar", new { @Controller = @item.Id })"><b>@item.Nome</b></a>
+                                </td>
+                                <td>@item.Empresa</td>
+                                <td>@item.Email</td>
+                                <td>@item.Telefone</td>
+                                <td>@item.Nascimento</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
